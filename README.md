@@ -46,6 +46,11 @@
 
 ## Usage
 
+```toml
+[dependencies]
+maestro = { git = "https://github.com/maestro-org/rust-sdk.git" }
+```
+
 ```rust
 use maestro::Maestro;
 
