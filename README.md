@@ -31,9 +31,10 @@
 # Getting Started
 
 ## Prerequisites
-* [Rust](https://www.rust-lang.org/tools/install)
-* [Clippy](https://github.com/rust-lang/rust-clippy)
-* [Audit](https://docs.rs/cargo-audit/latest/cargo_audit/)
+
+- [Rust](https://www.rust-lang.org/tools/install)
+- [Clippy](https://github.com/rust-lang/rust-clippy)
+- [Audit](https://docs.rs/cargo-audit/latest/cargo_audit/)
 
 ## Installation
 
@@ -45,22 +46,43 @@
 
 ## Usage
 
-```rust
-// TODO
+```toml
+[dependencies]
+maestro = { git = "https://github.com/maestro-org/rust-sdk.git" }
 ```
 
-* To generate an API key, create a free account [here](https://dashboard.gomaestro.org/)!
-* Network options: `mainnet`, `preprod`, `preview`
+```rust
+use maestro::Maestro;
+
+let maestro_client = Maestro::new("<PROJECT_API_KEY>", "<NETWORK>")
+```
+
+- To generate an API key, create a free account [here](https://dashboard.gomaestro.org/)!
+- Network options: `mainnet`, `preprod`, `preview`
 
 ## Example
 
 ```rust
-// TODO
+use maestro::Maestro;
+
+#[tokio::main]
+async fn main() {
+    let maestro_client = Maestro::new(
+        String::from("<PROJECT_API_KEY>"),
+        String::from("<NETWORK>"),
+    );
+
+    match maestro_client.block_info(9005859).await {
+        Ok(block_info) => println!("{}", block_info.data.absolute_slot),
+        Err(e) => eprint!("Failed to retrieve block info {}", e),
+    }
+}
 ```
 
 # Documentation
 
-* [Maestro public docs](https://docs.gomaestro.org/)
+- [Maestro public docs](https://docs.gomaestro.org/)
 
 # Contributing
+
 Meastro welcomes all contributors! Please see our [contributing guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md).
