@@ -142,3 +142,9 @@ pub struct StakePoolUpdates {
     pub data: Vec<StakePoolDetails>,
     pub last_updated: utils::LastUpdated,
 }
+
+#[derive(Deserialize)]
+pub struct StakePoolDelegatorHistory {
+    pub amount: String,
+    pub stake_address: String,
+}
