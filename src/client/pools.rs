@@ -110,7 +110,7 @@ impl Maestro {
         pool_id: &str,
         epoch_no: i64,
         params: Option<Parameters>,
-    ) -> Result<Vec<StakePoolDelegatorHistory>, Box<dyn Error>> {
+    ) -> Result<StakePoolDelegatorHistory, Box<dyn Error>> {
         let formatted_params = params.map(|p| p.format()).unwrap_or_default();
         let url = format!(
             "/pools/{}/delegators/{}{}",
