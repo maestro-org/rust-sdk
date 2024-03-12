@@ -151,7 +151,7 @@ pub struct StakePoolDelegatorHistoryData {
 
 #[derive(Deserialize)]
 pub struct StakePoolDelegatorHistory {
-    pub data: Vec<StakePoolDelegatorHistory>,
+    pub data: Vec<StakePoolDelegatorHistoryData>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
