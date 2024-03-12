@@ -56,7 +56,7 @@ pub struct StakePoolHistoryData {
     pub epoch_no: i64,
     pub epoch_ros: String,
     pub fixed_cost: i64,
-    pub margin: i64,
+    pub margin: serde_json::Value,
     pub pool_fees: i64,
     pub saturation_pct: serde_json::Value,
 }
