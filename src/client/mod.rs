@@ -10,6 +10,7 @@ pub mod epochs;
 pub mod general;
 pub mod linear_vesting;
 pub mod maestro;
+pub mod markets;
 pub mod pools;
 pub mod scripts;
 pub mod transactions;
