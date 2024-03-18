@@ -2,7 +2,7 @@ use chrono::{DateTime, Utc};
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize)]
+#[derive(Clone, Debug, Deserialize)]
 pub struct DexPairOHLC {
     pub coin_a_change_pct: Decimal,
     pub coin_a_close: Decimal,
@@ -20,7 +20,7 @@ pub struct DexPairOHLC {
     pub timestamp: DateTime<Utc>,
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Copy, Debug, Serialize)]
 pub enum Resolution {
     #[serde(rename = "1m")]
     OneMinute,
@@ -42,7 +42,7 @@ pub enum Resolution {
     OneMonth,
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Copy, Debug, Serialize)]
 pub enum Sort {
     #[serde(rename = "asc")]
     Asc,
@@ -50,9 +50,9 @@ pub enum Sort {
     Desc,
 }
 
-#[derive(Default, Serialize)]
+#[derive(Clone, Debug, Default, Serialize)]
 pub struct DexPairOHLCParameters {
-    pub resolution: Option<String>,
+    pub resolution: Option<Resolution>,
     pub from: Option<String>,
     pub to: Option<String>,
     pub limit: Option<i64>,
