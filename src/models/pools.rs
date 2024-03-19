@@ -56,7 +56,7 @@ pub struct StakePoolHistoryData {
     pub epoch_no: i64,
     pub epoch_ros: String,
     pub fixed_cost: i64,
-    pub margin: i64,
+    pub margin: serde_json::Value,
     pub pool_fees: i64,
     pub saturation_pct: serde_json::Value,
 }
@@ -141,4 +141,17 @@ pub struct StakePoolRelays {
 pub struct StakePoolUpdates {
     pub data: Vec<StakePoolDetails>,
     pub last_updated: utils::LastUpdated,
+}
+
+#[derive(Deserialize)]
+pub struct StakePoolDelegatorHistoryData {
+    pub amount: String,
+    pub stake_address: String,
+}
+
+#[derive(Deserialize)]
+pub struct StakePoolDelegatorHistory {
+    pub data: Vec<StakePoolDelegatorHistoryData>,
+    pub last_updated: utils::LastUpdated,
+    pub next_cursor: Option<String>,
 }
