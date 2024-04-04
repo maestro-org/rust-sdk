@@ -95,7 +95,7 @@ pub struct Utxo {
 pub struct ReferenceScript {
     pub bytes: String,
     pub hash: String,
-    pub json: HashMap<String, serde_json::Value>,
+    pub json: Option<HashMap<String, serde_json::Value>>,
     pub r#type: String,
 }
 
