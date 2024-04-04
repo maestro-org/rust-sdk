@@ -87,7 +87,7 @@ pub struct Utxo {
     pub index: i64,
     pub reference_script: ReferenceScript,
     pub tx_hash: String,
-    pub tx_out_cbor: String,
+    pub txout_cbor: String,
 }
 
 #[derive(Deserialize)]
