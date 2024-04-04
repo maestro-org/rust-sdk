@@ -87,7 +87,6 @@ pub struct Utxo {
     pub index: i64,
     pub reference_script: ReferenceScript,
     pub tx_hash: String,
-    pub slot: i64,
     pub tx_out_cbor: String,
 }
 
