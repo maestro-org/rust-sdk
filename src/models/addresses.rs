@@ -85,9 +85,9 @@ pub struct Utxo {
     pub assets: Vec<Asset>,
     pub datum: Option<HashMap<String, serde_json::Value>>,
     pub index: i64,
-    pub reference_script: ReferenceScript,
+    pub reference_script: Option<ReferenceScript>,
     pub tx_hash: String,
-    pub slot: i64,
+    #[serde(alias="txout_cbor")]
     pub tx_out_cbor: String,
 }
 
@@ -95,7 +95,7 @@ pub struct Utxo {
 pub struct ReferenceScript {
     pub bytes: String,
     pub hash: String,
-    pub json: HashMap<String, serde_json::Value>,
+    pub json: Option<HashMap<String, serde_json::Value>>,
     pub r#type: String,
 }
 

@@ -54,11 +54,11 @@ impl Maestro {
         params: Option<HashMap<String, String>>,
     ) -> Result<TransactionOutputFromReference, Box<dyn Error>> {
         let formatted_params = params.map_or("".to_string(), |p| {
-            p.iter()
+            "?".to_string() + p.iter()
                 .map(|(k, v)| format!("{}={}", k, v))
                 .collect::<Vec<String>>()
                 .join("&")
-                .to_string()
+                .as_str()
         });
         let url = format!(
             "/transactions/{}/outputs/{}/txo{}",
