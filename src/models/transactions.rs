@@ -75,9 +75,16 @@ pub struct TransactionOutputsFromReferences {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct AdditionalUtxo {
+    pub tx_hash: String,
+    pub index: u32,
+    pub txout_cbor: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct EvaluateTx {
     pub cbor: String,
-    pub additional_utxos: Vec<String>,
+    pub additional_utxos: Vec<AdditionalUtxo>,
 }
 
 #[derive(Deserialize, Debug, Clone)]
