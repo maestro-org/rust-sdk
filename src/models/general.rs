@@ -1,71 +1,71 @@
 use crate::utils;
 use serde::Deserialize;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ChainTipData {
     pub block_hash: String,
     pub height: i64,
     pub slot: i64,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ChainTip {
     pub data: ChainTipData,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct EraTimeStamp {
     pub epoch: i64,
     pub slot: i64,
     pub time: i64,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct EraParams {
     pub epoch_length: i64,
     pub safe_zone: i64,
     pub slot_length: i64,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Era {
     pub end: EraTimeStamp,
     pub parameters: EraParams,
     pub start: EraTimeStamp,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct EraHistory {
     pub data: Vec<Era>,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ProtocolParameters {
     pub data: ProtocolParams,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ExUnits {
     pub memory: i64,
     pub steps: i64,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StringExUnits {
     pub memory: String,
     pub steps: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ProtocolVersion {
     pub major: i64,
     pub minor: i64,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ProtocolParams {
     pub coins_per_utxo_byte: i64,
     pub collateral_percentage: i64,

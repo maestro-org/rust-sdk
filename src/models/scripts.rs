@@ -2,13 +2,13 @@ use crate::utils;
 use serde::Deserialize;
 use serde::Serialize;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum ScriptVersion {
     PlutusV1,
     PlutusV2,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Script {
     pub bytes: String,
     pub hash: String,
@@ -16,7 +16,7 @@ pub struct Script {
     pub r#type: ScriptVersion,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ScriptByHash {
     pub data: Script,
     pub last_updated: utils::LastUpdated,

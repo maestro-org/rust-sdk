@@ -1,12 +1,12 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct LockTransaction {
     pub cbor_hex: String,
     pub tx_hash: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct VestingState {
     pub asset_name: String,
     pub asset_symbol: String,
@@ -17,7 +17,7 @@ pub struct VestingState {
     pub vesting_period_end: i64,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct CollectTransaction {
     pub cbor_hex: String,
     pub tx_hash: String,

@@ -2,26 +2,26 @@ use crate::utils;
 use serde::Deserialize;
 use std::collections::HashMap;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub enum Network {
     Mainnet,
     Testnet,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub enum CredentialKind {
     Key,
     Script,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct PaymentCredential {
     pub bech32: String,
     pub hex: String,
     pub kind: CredentialKind,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakingCredential {
     pub bech32: String,
     pub hex: String,
@@ -30,7 +30,7 @@ pub struct StakingCredential {
     pub reward_address: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct DecodedAddress {
     pub bech32: String,
     pub hex: String,
@@ -39,13 +39,13 @@ pub struct DecodedAddress {
     pub staking_cred: StakingCredential,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct AddressTransactionCount {
     pub data: i32,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Transaction {
     pub input: bool,
     pub output: bool,
@@ -53,33 +53,33 @@ pub struct Transaction {
     pub tx_hash: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct AddressTransactions {
     pub data: Vec<Transaction>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct UtxoReference {
     pub index: i64,
     pub tx_hash: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct UtxoReferencesAtAddress {
     pub data: Vec<UtxoReference>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Asset {
     pub amount: i64,
     pub unit: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Utxo {
     pub address: String,
     pub assets: Vec<Asset>,
@@ -87,11 +87,11 @@ pub struct Utxo {
     pub index: i64,
     pub reference_script: Option<ReferenceScript>,
     pub tx_hash: String,
-    #[serde(alias="txout_cbor")]
+    #[serde(alias = "txout_cbor")]
     pub tx_out_cbor: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ReferenceScript {
     pub bytes: String,
     pub hash: String,
@@ -99,7 +99,7 @@ pub struct ReferenceScript {
     pub r#type: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct UtxosAtAddress {
     pub data: Vec<Utxo>,
     pub last_updated: utils::LastUpdated,

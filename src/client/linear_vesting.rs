@@ -3,7 +3,7 @@ use crate::models::linear_vesting::{CollectTransaction, LockTransaction, Vesting
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct LockBody {
     pub sender: String,
     pub beneficiary: String,
