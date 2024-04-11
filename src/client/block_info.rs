@@ -3,7 +3,7 @@ use crate::utils;
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct OperationalCertificate {
     pub hot_vkey: String,
     pub kes_period: i64,
@@ -11,13 +11,13 @@ pub struct OperationalCertificate {
     pub sequence_number: i64,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct TotalExUnits {
     pub mem: i64,
     pub steps: i64,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BlockInfoData {
     pub absolute_slot: i64,
     pub block_producer: String,
@@ -40,7 +40,7 @@ pub struct BlockInfoData {
     pub vrf_key: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct BlockInfo {
     pub data: BlockInfoData,
     pub last_updated: utils::last_updated::LastUpdated,

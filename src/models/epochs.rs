@@ -1,7 +1,7 @@
 use crate::utils;
 use serde::Deserialize;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Epoch {
     pub blk_count: i32,
     pub epoch_no: i32,
@@ -10,7 +10,7 @@ pub struct Epoch {
     pub tx_count: i32,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct EpochResp {
     pub data: Epoch,
     pub last_updated: utils::LastUpdated,

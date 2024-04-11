@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{addresses::Utxo, scripts::Script};
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Certificates {
     pub mir_transfers: Vec<serde_json::Value>,
     pub pool_registrations: Vec<serde_json::Value>,
@@ -13,7 +13,7 @@ pub struct Certificates {
     pub stake_registrations_reserves: Vec<serde_json::Value>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Redeemers {
     pub certificates: Vec<serde_json::Value>,
     pub mints: Vec<serde_json::Value>,
@@ -21,7 +21,7 @@ pub struct Redeemers {
     pub withdrawals: Vec<serde_json::Value>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct TransactionDetail {
     pub additional_signers: Vec<String>,
     pub block_absolute_slot: i64,
@@ -49,44 +49,44 @@ pub struct TransactionDetail {
     pub withdrawals: Vec<serde_json::Value>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct TransactionDetails {
     pub data: TransactionDetail,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct TransactionOutputFromReference {
     pub data: Utxo,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct TxoReference {
     pub tx_hash: String,
     pub index: i32,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct TransactionOutputsFromReferences {
     pub data: Vec<Utxo>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct EvaluateTx {
     pub cbor: String,
     pub additional_utxos: Vec<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ExecutionUnits {
     pub mem: i64,
     pub steps: i64,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct RedeemerEvaluation {
     pub ex_units: ExecutionUnits,
     pub redeemer_index: i32,
