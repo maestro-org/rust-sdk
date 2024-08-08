@@ -3,7 +3,6 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 pub struct ClientConfig {
     pub version: String,
-    pub timeout: i64,
 }
 
 #[derive(Deserialize)]
@@ -16,7 +15,6 @@ impl Config {
         Config {
             client: ClientConfig {
                 version: "v1".to_string(),
-                timeout: 10,
             },
         }
     }
