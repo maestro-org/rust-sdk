@@ -2,8 +2,14 @@
 name = "maestro"
 version = "1.0.0"
 description = "Rust SDK for the Maestro Dapp Platform"
-edition = "2021"
+repository = "https://github.com/maestro-org/rust-sdk"
+documentation = "https://docs.gomaestro.org/"
+authors = ["Maestro Team <support@gomaestro.org"]
+readme = "README.md"
+keywords = ["maestro", "sdk", "rust"]
 license = "Apache-2.0"
+edition = "2021"
+exclude = [".github", ".vscode", ".gitignore"]
 
 [dependencies]
 reqwest = "0.11"
