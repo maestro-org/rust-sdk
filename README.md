@@ -23,7 +23,7 @@
       <img src="https://img.shields.io/badge/-Discord-414EEC?style=flat-square&logo=discord&logoColor=white" />
     </a>
     <a href="https://crates.io/crates/maestro-rust-sdk">
-      <img src="https://img.shields.io/crates/maestro-rust-sdk" />
+      <img src="https://img.shields.io/crates/v/maestro-rust-sdk" />
     </a>
   </p>
 </p>
