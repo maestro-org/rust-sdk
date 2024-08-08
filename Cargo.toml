@@ -1,6 +1,7 @@
 [package]
 name = "maestro"
 version = "1.0.0"
+description = "Rust SDK for the Maestro Dapp Platform"
 edition = "2021"
 license = "Apache-2.0"
 
