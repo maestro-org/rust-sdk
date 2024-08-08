@@ -1,20 +1,20 @@
 use crate::utils;
 use serde::Deserialize;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Pool {
     pub pool_id_bech32: String,
     pub ticker: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct RegisteredPools {
     pub data: Vec<Pool>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Block {
     pub abs_slot: i64,
     pub block_hash: String,
@@ -24,14 +24,14 @@ pub struct Block {
     pub epoch_slot: i64,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct PoolMintedBlocks {
     pub data: Vec<Block>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolDelegator {
     pub active_epoch_no: i64,
     pub amount: String,
@@ -39,14 +39,14 @@ pub struct StakePoolDelegator {
     pub stake_address: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolDelegators {
     pub data: Vec<StakePoolDelegator>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolHistoryData {
     pub active_stake: i64,
     pub active_stake_pct: String,
@@ -56,19 +56,19 @@ pub struct StakePoolHistoryData {
     pub epoch_no: i64,
     pub epoch_ros: String,
     pub fixed_cost: i64,
-    pub margin: i64,
+    pub margin: serde_json::Value,
     pub pool_fees: i64,
     pub saturation_pct: serde_json::Value,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolHistory {
     pub data: Vec<StakePoolHistoryData>,
     pub last_updated: utils::LastUpdated,
     pub next_cursor: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Relay {
     pub dns: String,
     pub ipv4: String,
@@ -77,7 +77,7 @@ pub struct Relay {
     pub srv: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolDetails {
     pub active_epoch_no: i64,
     pub active_stake: i64,
@@ -105,13 +105,13 @@ pub struct StakePoolDetails {
     pub vrf_key_hash: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolInformation {
     pub data: StakePoolDetails,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Poolmetadata {
     pub meta_hash: String,
     pub meta_json: serde_json::Value,
@@ -119,26 +119,39 @@ pub struct Poolmetadata {
     pub pool_id_bech32: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolMetadata {
     pub data: Poolmetadata,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct RelaysAndId {
     pub pool_id_bech32: String,
     pub relays: Vec<Relay>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolRelays {
     pub data: Vec<RelaysAndId>,
     pub last_updated: utils::LastUpdated,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolUpdates {
     pub data: Vec<StakePoolDetails>,
     pub last_updated: utils::LastUpdated,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct StakePoolDelegatorHistoryData {
+    pub amount: String,
+    pub stake_address: String,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct StakePoolDelegatorHistory {
+    pub data: Vec<StakePoolDelegatorHistoryData>,
+    pub last_updated: utils::LastUpdated,
+    pub next_cursor: Option<String>,
 }

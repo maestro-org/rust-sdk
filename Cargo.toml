@@ -15,3 +15,6 @@ exclude = [".github", ".vscode", ".gitignore"]
 reqwest = "0.11"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+rust_decimal = "1.34"
+serde_qs = "0.12"
+chrono = { version = "0.4", features = ["serde"] }

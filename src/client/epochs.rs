@@ -12,7 +12,7 @@ impl Maestro {
     }
 
     pub async fn specific_epoch(&self, epoch_no: i32) -> Result<EpochResp, Box<dyn Error>> {
-        let url = format!("/epochs/{}/info", epoch_no);
+        let url = format!("/epochs/{}", epoch_no);
         let resp = self.get(&url).await?;
         let specific_epoch =
             serde_json::from_str(&resp).map_err(|e| Box::new(e) as Box<dyn Error>)?;

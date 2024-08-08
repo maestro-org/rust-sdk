@@ -2,8 +2,8 @@ use super::maestro::Maestro;
 use crate::models::{
     common::BasicResponse,
     transactions::{
-        EvaluateTx, RedeemerEvaluation, TransactionDetails, TransactionOutputFromReference,
-        TransactionOutputsFromReferences,
+        AdditionalUtxo, EvaluateTx, RedeemerEvaluation, TransactionDetails,
+        TransactionOutputFromReference, TransactionOutputsFromReferences,
     },
 };
 use std::{collections::HashMap, error::Error};
@@ -54,11 +54,12 @@ impl Maestro {
         params: Option<HashMap<String, String>>,
     ) -> Result<TransactionOutputFromReference, Box<dyn Error>> {
         let formatted_params = params.map_or("".to_string(), |p| {
-            p.iter()
-                .map(|(k, v)| format!("{}={}", k, v))
-                .collect::<Vec<String>>()
-                .join("&")
-                .to_string()
+            "?".to_string()
+                + p.iter()
+                    .map(|(k, v)| format!("{}={}", k, v))
+                    .collect::<Vec<String>>()
+                    .join("&")
+                    .as_str()
         });
         let url = format!(
             "/transactions/{}/outputs/{}/txo{}",
@@ -92,7 +93,7 @@ impl Maestro {
     pub async fn evaluate_tx(
         &self,
         tx_cbor: &str,
-        additional_utxos: Vec<String>,
+        additional_utxos: Vec<AdditionalUtxo>,
     ) -> Result<Vec<RedeemerEvaluation>, Box<dyn Error>> {
         let url = "/transactions/evaluate";
         let body = EvaluateTx {

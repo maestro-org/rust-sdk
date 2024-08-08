@@ -64,8 +64,6 @@ impl Maestro {
         let req = self
             .http_client
             .post(format!("{}{}", &self.base_url, url))
-            .header("Accept", "application/json")
-            .header("api-key", &self.api_key)
             .header("Content-Type", "application/json")
             .body(json_body);
 

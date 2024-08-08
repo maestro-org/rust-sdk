@@ -1,8 +1,9 @@
 use super::maestro::Maestro;
 use crate::{
     models::pools::{
-        PoolMintedBlocks, RegisteredPools, StakePoolDelegators, StakePoolHistory,
-        StakePoolInformation, StakePoolMetadata, StakePoolRelays, StakePoolUpdates,
+        PoolMintedBlocks, RegisteredPools, StakePoolDelegatorHistory, StakePoolDelegators,
+        StakePoolHistory, StakePoolInformation, StakePoolMetadata, StakePoolRelays,
+        StakePoolUpdates,
     },
     utils::Parameters,
 };
@@ -102,5 +103,22 @@ impl Maestro {
         let stake_pool_updates =
             serde_json::from_str(&resp).map_err(|e| Box::new(e) as Box<dyn Error>)?;
         Ok(stake_pool_updates)
+    }
+
+    pub async fn stake_pool_delegator_history(
+        &self,
+        pool_id: &str,
+        epoch_no: i64,
+        params: Option<Parameters>,
+    ) -> Result<StakePoolDelegatorHistory, Box<dyn Error>> {
+        let formatted_params = params.map(|p| p.format()).unwrap_or_default();
+        let url = format!(
+            "/pools/{}/delegators/{}{}",
+            pool_id, epoch_no, formatted_params
+        );
+        let resp = self.get(&url).await?;
+        let stake_pool_delegator_history =
+            serde_json::from_str(&resp).map_err(|e| Box::new(e) as Box<dyn Error>)?;
+        Ok(stake_pool_delegator_history)
     }
 }
