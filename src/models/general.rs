@@ -36,57 +36,74 @@ pub struct Era {
 }
 
 #[derive(Deserialize, Debug, Clone)]
-pub struct EraHistory {
+pub struct EraSummaries {
     pub data: Vec<Era>,
     pub last_updated: utils::LastUpdated,
 }
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct ProtocolParameters {
-    pub data: ProtocolParams,
+    pub data: ProtocolParametersData,
     pub last_updated: utils::LastUpdated,
 }
 
 #[derive(Deserialize, Debug, Clone)]
-pub struct ExUnits {
-    pub memory: i64,
-    pub steps: i64,
+pub struct Bytes {
+    pub bytes: u64,
 }
 
 #[derive(Deserialize, Debug, Clone)]
-pub struct StringExUnits {
-    pub memory: String,
-    pub steps: String,
+pub struct ExUnits {
+    pub memory: u64,
+    pub cpu: u64,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct LovelaceAmount {
+    pub lovelace: u64,
 }
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct ProtocolVersion {
-    pub major: i64,
-    pub minor: i64,
+    pub major: u64,
+    pub minor: u64,
 }
 
 #[derive(Deserialize, Debug, Clone)]
-pub struct ProtocolParams {
-    pub coins_per_utxo_byte: i64,
-    pub collateral_percentage: i64,
-    pub cost_models: serde_json::Value,
-    pub desired_number_of_pools: i64,
-    pub max_block_body_size: i64,
-    pub max_block_header_size: i64,
-    pub max_collateral_inputs: i64,
+pub struct PlutusCostModels {
+    pub plutus_v1: Vec<u64>,
+    pub plutus_v2: Vec<u64>,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct ScriptExecutionPrices {
+    pub memory: String,
+    pub cpu: String,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct ProtocolParametersData {
+    pub collateral_percentage: u64,
+    pub desired_number_of_stake_pools: u64,
+    pub max_block_body_size: Bytes,
+    pub max_block_header_size: Bytes,
+    pub max_collateral_inputs: u64,
     pub max_execution_units_per_block: ExUnits,
     pub max_execution_units_per_transaction: ExUnits,
-    pub max_tx_size: i64,
-    pub max_value_size: i64,
-    pub min_fee_coefficient: i64,
-    pub min_fee_constant: i64,
-    pub min_pool_cost: i64,
+    pub max_transaction_size: Bytes,
+    pub max_value_size: Bytes,
+    pub min_fee_coefficient: u64,
+    pub min_fee_constant: LovelaceAmount,
+    pub min_stake_pool_cost: LovelaceAmount,
+    pub min_utxo_deposit_coefficient: u64,
+    pub min_utxo_deposit_constant: LovelaceAmount,
     pub monetary_expansion: String,
-    pub pool_deposit: i64,
-    pub pool_influence: String,
-    pub pool_retirement_epoch_bound: i64,
-    pub prices: StringExUnits,
-    pub protocol_version: ProtocolVersion,
-    pub stake_key_deposit: i64,
+    pub plutus_cost_models: PlutusCostModels,
+    pub script_execution_prices: ScriptExecutionPrices,
+    pub stake_credential_deposit: LovelaceAmount,
+    pub stake_pool_deposit: LovelaceAmount,
+    pub stake_pool_pledge_influence: String,
+    pub stake_pool_retirement_epoch_bound: u64,
     pub treasury_expansion: String,
+    pub version: ProtocolVersion,
 }

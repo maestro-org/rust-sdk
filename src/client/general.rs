@@ -1,7 +1,7 @@
 use super::maestro::Maestro;
 use crate::models::{
     common::BasicResponse,
-    general::{ChainTip, EraHistory, ProtocolParameters},
+    general::{ChainTip, EraSummaries, ProtocolParameters},
 };
 use std::error::Error;
 
@@ -13,15 +13,15 @@ impl Maestro {
         Ok(chain_tip)
     }
 
-    pub async fn era_history(&self) -> Result<EraHistory, Box<dyn Error>> {
-        let url = "/era-history";
+    pub async fn era_history(&self) -> Result<EraSummaries, Box<dyn Error>> {
+        let url = "/era-summaries";
         let resp = self.get(url).await?;
         let era_history = serde_json::from_str(&resp).map_err(|e| Box::new(e) as Box<dyn Error>)?;
         Ok(era_history)
     }
 
     pub async fn protocol_parameters(&self) -> Result<ProtocolParameters, Box<dyn Error>> {
-        let url = "/protocol-params";
+        let url = "/protocol-parameters";
         let resp = self.get(url).await?;
         let protocol_params =
             serde_json::from_str(&resp).map_err(|e| Box::new(e) as Box<dyn Error>)?;
