@@ -19,6 +19,7 @@ jobs:
       - name: Build
         run: cargo build --verbose
       - name: Publish to crates.io
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: cargo publish --token ${CRATES_TOKEN}
         env:
           CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
