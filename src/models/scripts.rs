@@ -6,6 +6,7 @@ use serde::Serialize;
 pub enum ScriptVersion {
     PlutusV1,
     PlutusV2,
+    PlutusV3,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]

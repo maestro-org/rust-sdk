@@ -33,7 +33,6 @@ pub struct PoolMintedBlocks {
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolDelegator {
-    pub active_epoch_no: i64,
     pub amount: String,
     pub latest_delegation_tx_hash: String,
     pub stake_address: String,
@@ -79,7 +78,6 @@ pub struct Relay {
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolDetails {
-    pub active_epoch_no: i64,
     pub active_stake: i64,
     pub block_count: i64,
     pub fixed_cost: i64,
