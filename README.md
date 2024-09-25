@@ -48,7 +48,7 @@
 
 ```toml
 [dependencies]
-maestro = { git = "https://github.com/maestro-org/rust-sdk.git" }
+maestro-rust-sdk = { git = "https://github.com/maestro-org/rust-sdk.git" }
 ```
 
 ```rust
