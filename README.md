@@ -36,14 +36,6 @@
 - [Clippy](https://github.com/rust-lang/rust-clippy)
 - [Audit](https://docs.rs/cargo-audit/latest/cargo_audit/)
 
-## Installation
-
-### Crates Reference
-
-```bash
-# TODO
-```
-
 ## Usage
 
 ```toml
