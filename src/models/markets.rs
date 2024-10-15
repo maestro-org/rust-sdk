@@ -55,6 +55,7 @@ pub struct DexPairOHLCParameters {
     pub resolution: Option<Resolution>,
     pub from: Option<String>,
     pub to: Option<String>,
+    pub carry: Option<bool>,
     pub limit: Option<i64>,
     pub sort: Option<Sort>,
 }

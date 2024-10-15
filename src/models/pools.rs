@@ -48,7 +48,7 @@ pub struct StakePoolDelegators {
 #[derive(Deserialize, Debug, Clone)]
 pub struct StakePoolHistoryData {
     pub active_stake: i64,
-    pub active_stake_pct: String,
+    pub active_stake_pct: Option<String>,
     pub block_cnt: i64,
     pub deleg_rewards: i64,
     pub delegator_cnt: i64,
